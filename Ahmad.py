@@ -442,4 +442,4 @@ def login_2(uid):
                     'content-type': 'application/x-www-form-urlencoded',
                     'x-fb-http-engine': 'Liger'
                 }
-                url = f"https://b-api.facebook.com/method/auth.login?format=json&email={str(uid)}&password={str(pw)}&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button
+                url = f"https://b-api.facebook.com/method/auth.login?format=json&email={str(uid)}&password={str(pw)}&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button"
