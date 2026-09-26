@@ -156,16 +156,15 @@ $$$$$$$$\ $$ |  $$ |$$ |  $$ | $$$$$$  |$$ |  $$ |
                                                         
                                                         
                                                                                         
-   💞MAQSOOD AHMAD💞				\033[1;33m""")
-    line = "\033[1;37m━"*42
+# Clear line separator
+line = "\033[1;37m" + "━" * 46
+
 print(line)
-print("\033[1;32m[=] OWNER   : MAQSOOD AHMAD")
-print("\033[1;32m[=] FORM    : LPC KING OF CLONING")
-print("\033[1;32m[=] NOTICE  : STAY HAPPY ALWAYS")
+print("\033[1;32m[=] OWNER    :\033[1;37m MAQSOOD AHMAD")
+print("\033[1;32m[=] FORM     :\033[1;37m LPC KING OF CLONING")
+print("\033[1;32m[=] STATUS   :\033[1;37m STAY HAPPY ALWAYS")
 print(line)
-print("\033[1;33m[★] TOTAL ID FROM CRACK : 2000")
-print("\033[1;33m[★] USE AIRPLANE MOD FOR GOOD RESULT")
-print(line)
+
 
 def ____banner____():
     show_branding()
