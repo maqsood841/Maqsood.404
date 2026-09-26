@@ -157,12 +157,15 @@ $$$$$$$$\ $$ |  $$ |$$ |  $$ | $$$$$$  |$$ |  $$ |
                                                         
                                                                                         
    💞MAQSOOD AHMAD💞				\033[1;33m""")
-    print("\033[1;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    print("\x1b[38;5;46m[\033[1;97m=\x1b[38;5;46m] \033[1;32mOWNER      \x1b[38;5;46m▶  \033[1;36mMAQSOOD AHMAD")
-    print("\x1b[38;5;46m[\033[1;97m=\x1b[38;5;46m] \033[1;35mFORM     \x1b[38;5;46m▶  \033[1;34mLPC🥭KING OF CLONING🥭")
-    print("\x1b[38;5;46m[\033[1;97m=\x1b[38;5;46m] \033[1;36m	 🥭 STAY HAPPY ALWAYS 🥭")
-
-    print("\033[1;97m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m")
+    line = "\033[1;37m━"*42
+print(line)
+print("\033[1;32m[=] OWNER   : MAQSOOD AHMAD")
+print("\033[1;32m[=] FORM    : LPC KING OF CLONING")
+print("\033[1;32m[=] NOTICE  : STAY HAPPY ALWAYS")
+print(line)
+print("\033[1;33m[★] TOTAL ID FROM CRACK : 2000")
+print("\033[1;33m[★] USE AIRPLANE MOD FOR GOOD RESULT")
+print(line)
 
 def ____banner____():
     show_branding()
