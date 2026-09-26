@@ -287,9 +287,9 @@ def old_One():
         for mal in user:
             uid = star + mal
             if meth == 'A':
-                pool.submit(login_1, uid)
+                pool.submit(Login_1, uid)
             elif meth == 'B':
-                pool.submit(login_2, uid)
+                pool.submit(Login_2, uid)
             else:
                 print(f"    {rad}[!] INVALID METHOD SELECTED")
                 break
@@ -322,9 +322,9 @@ def old_Tow():
         linex()
         for uid in user:
             if meth == 'A':
-                pool.submit(login_1, uid)
+                pool.submit(Login_1, uid)
             elif meth == 'B':
-                pool.submit(login_2, uid)
+                pool.submit(Login_2, uid)
             else:
                 print(f"    {rad}[!] INVALID METHOD SELECTED")
                 break
@@ -356,7 +356,7 @@ def old_Tree():
         linex()
         for uid in user:
             if meth == 'A':
-                pool.submit(login_1, uid)
+                pool.submit(Login_1, uid)
             elif meth == 'B':
                 pool.submit(Login_2, uid)
             else:
